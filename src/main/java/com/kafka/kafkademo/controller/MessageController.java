@@ -1,6 +1,8 @@
 package com.kafka.kafkademo.controller;
 
+import com.kafka.kafkademo.kafka.JsonKafkaProducer;
 import com.kafka.kafkademo.kafka.KafkaProducer;
+import com.kafka.kafkademo.payload.User;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MessageController {
     private KafkaProducer kafkaProducer;
 
-//    public MessageController(KafkaProducer kafkaProducer) {
+    //    public MessageController(KafkaProducer kafkaProducer) {
 //        this.kafkaProducer = kafkaProducer;
 //    }
 
@@ -25,4 +27,5 @@ public class MessageController {
         kafkaProducer.sendMessage(message);
         return ResponseEntity.ok(String.format("Message sent to the topic: %s",message));
     }
+
 }
